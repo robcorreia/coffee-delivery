@@ -5,7 +5,7 @@ import {
   IntroTitle,
 } from "./styles";
 import introImg from "../../../../assets/intro-img.png";
-import { RegularText } from "../../../../components/Header/Typography";
+import { RegularText } from "../../../../components/Typography";
 import { InfoWithIcon } from "../../../../components/InfoWithIcon";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import { useTheme } from "styled-components";
