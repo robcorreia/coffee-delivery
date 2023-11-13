@@ -11,7 +11,9 @@ export function Header() {
   return (
     <HeaderContainer>
       <div className="container">
-        <img src={coffeeLogoImg} alt="Coffee Delivery Logo" />
+        <NavLink to="/">
+          <img src={coffeeLogoImg} alt="Coffee Delivery Logo" />
+        </NavLink>
         <HeaderButtonsContainer>
           <HeaderButton variant="purple">
             <MapPin size={20} weight="fill" />
