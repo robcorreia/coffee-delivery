@@ -6,7 +6,7 @@ export function HomePage() {
   return (
     <HomeContainer>
       <Intro />
-      <OurCoffees/>
+      <OurCoffees />
     </HomeContainer>
   );
 }
