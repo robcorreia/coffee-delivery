@@ -9,7 +9,7 @@ import {
 import { RegularText, TitleText } from "../../../../components/Typography";
 import { QuantityInput } from "../../../../components/QuantityInput";
 import { ShoppingCart } from "phosphor-react";
-import { formatNumber } from "../../../../utils/formatMoney";
+import { formatMoney } from "../../../../utils/formatMoney";
 import { useCart } from "../../../../hooks/useCart";
 import { useState } from "react";
 
@@ -27,7 +27,7 @@ interface CoffeeCardProps {
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
-  const formattedPrice = formatNumber(coffee.price);
+  const formattedPrice = formatMoney(coffee.price);
   const [quantity, setQuantity] = useState(1);
   const { addCoffeeToCart } = useCart();
 
