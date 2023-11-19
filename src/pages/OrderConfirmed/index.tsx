@@ -1,12 +1,31 @@
+import { useEffect } from "react";
 import { RegularText, TitleText } from "../../components/Typography";
 import { OrderConfirmedContainer, OrderDetailsContainer } from "./styles";
 import confirmedOrderImg from "../../assets/confirmed-order-img.svg";
 import { InfoWithIcon } from "../../components/InfoWithIcon";
 import { Clock, CurrencyDollar, MapPin } from "phosphor-react";
 import { useTheme } from "styled-components";
+import { useLocation, useNavigate } from "react-router-dom";
+import { OrderData } from "../CompleteOrder";
+import { paymentMethods } from "../CompleteOrder/components/CompleteOrderForm/PaymentMethodOptions";
+
+interface LocationType {
+  state: OrderData;
+}
 
 export function OrderConfirmedPage() {
   const { colors } = useTheme();
+  const { state } = useLocation() as unknown as LocationType;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!state) {
+      navigate("/");
+    }
+  }, []);
+
+  if (!state) return <></>;
+
   return (
     <OrderConfirmedContainer className="container">
       <div>
@@ -23,11 +42,11 @@ export function OrderConfirmedPage() {
             iconBg={colors["brand-purple"]}
             text={
               <RegularText>
-                Entrega em
+                Entrega em{" "}
                 <strong>
-                  Rua João Daniel Martinelli, 102 <br />
+                  {state.street}, {state.number} <br />
                 </strong>
-                Farrapos - Porto Alegre, RS
+                {state.district} - {state.city}, {state.uf}
               </RegularText>
             }
           />
@@ -49,7 +68,7 @@ export function OrderConfirmedPage() {
               <RegularText>
                 Pagamento na entrega
                 <br />
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethods[state.paymentMethod].label}</strong>
               </RegularText>
             }
           />
